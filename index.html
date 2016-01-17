@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- BEGIN HEAD -->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+        <meta content="" name="description"/>
+        <meta content="" name="author"/>
+
+        <title>4 школа</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js" type="text/javascript"></script>
+        <script src="/js/kernel.js"></script>       
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/cerulean/bootstrap.min.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+        <script>
+
+            kernel.css_load("/css/main.css");
+
+        </script>
+        <style>
+            #feedback-form { /* вся форма */
+                max-width: 550px;
+                padding: 2%;
+                border-radius: 3px;
+                background: #f1f1f1;
+            }
+            #feedback-form label { /* наименование полей */
+                float: left;
+                display: block;
+                clear: right;
+            }
+            #feedback-form .w100 { /* поля */
+                float: right;
+                max-width: 400px;
+                width: 97%;
+                margin-bottom: 1em;
+                padding: 1.5%;
+            }
+            #feedback-form .border { /* граница полей */
+                border-radius: 1px;
+                border-width: 1px;
+                border-style: solid;
+                border-color: #C0C0C0 #D9D9D9 #D9D9D9;
+                box-shadow: 0 1px 1px rgba(255,255,255,.5), 0 1px 1px rgba(0,0,0,.1) inset;
+            }
+            #feedback-form .border:focus {
+                outline: none;
+                border-color: #abd9f1 #bfe3f7 #bfe3f7;
+            }
+            #feedback-form .border:hover {
+                border-color: #7eb4ea #97cdea #97cdea;
+            }
+            #feedback-form .border:focus::-moz-placeholder { /* убрать при фокусе первоначальный текст поля */
+                color: transparent;
+            }
+            #feedback-form .border:focus::-webkit-input-placeholder {
+                color: transparent;
+            }
+            #feedback-form .border:not(:focus):not(:hover):valid { /* правильно заполненные поля */
+                opacity: .8;
+            }
+            #submitFF { /* кнопка "Отправить" */
+                padding: 2%;
+                border: none;
+                border-radius: 3px;
+                box-shadow: 0 0 0 1px rgba(0,0,0,.2) inset;
+                background: #669acc;
+                color: #fff;
+            }
+            #feedback-form br {
+                height: 0;
+                clear: both;
+            }
+            #submitFF:hover {
+                background: #5c90c2;
+            }
+            #submitFF:focus {
+                box-shadow: 0 1px 1px #fff, inset 0 1px 2px rgba(0,0,0,.8), inset 0 -1px 0 rgba(0,0,0,.05);
+            }
+        </style>
+    </head>
+
+    <body class="fixed-leftside fixed-header">
+        <div class="wrapper">
+            <!-- BEGIN LEFTSIDE -->
+            <div class="leftside">
+                <div class="sidebar">
+                    <ul class="nav-sidebar">
+                    </ul>   
+                </div>
+            </div>
+            <div class="rightside bg-grey-100">
+                <div class="page-head bg-grey-100">
+                    <div class="col-lg-12">
+                        <div class="panel">
+                            <div id="jgjfgd"></div>
+                        </div></div></div>
+                <div class="container-fluid">
+                    <footer class="bg-white">
+                        &copy;  v.grabko.
+                    </footer>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            kernel.page_load("/html/dropzone.tpl");
+            var menu = kernel.json_load("/json/menu.json");
+
+            var html = '<li class="nav-dropdown"><a href="javascript:void(0);" onclick=kernel.page_load("/html/dropzone.tpl")><i class="ion-beaker"></i> <span>Отправить ДЗ</span><i class="ion-chevron-right pull-right"></i></a></li>';
+
+            html = html + '<li class="nav-dropdown"><a href="javascript:void(0);"><i class="ion-beaker"></i> <span>A</span><i class="ion-chevron-right pull-right"></i></a><ul>';
+            for (var key in menu["А"]) {
+                html = html + '<li> <a href = "javascript:void(0);" onclick=kernel.page_load("' + menu["А"][key] + '")>' + key + '</a></li >';
+            }
+            html = html + "</ul></li>";
+
+
+
+            html = html + '<li class="nav-dropdown"><a href="javascript:void(0);"><i class="ion-beaker"></i> <span>Б</span><i class="ion-chevron-right pull-right"></i></a><ul>';
+            for (var key in menu["Б"]) {
+                html = html + '<li> <a href = "javascript:void(0);" onclick=kernel.page_load("' + menu["Б"][key] + '")>' + key + '</a></li >';
+            }
+            html = html + "</ul></li>";
+
+
+
+            html = html + '<li class="nav-dropdown"><a href="javascript:void(0);"><i class="ion-beaker"></i> <span>В</span><i class="ion-chevron-right pull-right"></i></a><ul>';
+            for (var key in menu["В"]) {
+                html = html + '<li> <a href = "javascript:void(0);" onclick=kernel.page_load("' + menu["В"][key] + '")>' + key + '</a></li >';
+            }
+            html = html + "</ul></li>";
+
+
+            $(".nav-sidebar").append(html);
+ап
+
+
+          
+document.getElementById('feedback-form').addEventListener('submit', function(evt){
+    alert("ДЗ отправляется. Не чего не трогайте. Примерное время отправки > 10c < 300c");
+  var http = new XMLHttpRequest(), f = this;
+  evt.preventDefault();
+  http.open("POST", "uploader.php", true);
+  http.onreadystatechange = function() {
+    if (http.readyState == 4 && http.status == 200) {
+       f.messageFF.removeAttribute('value');
+        f.messageFF.value='';
+      alert("ДЗ успешно отправленно. ");
+    }
+  }
+  http.onerror = function() {
+   alert("Произошла неизвестная ошибка ");
+  }
+  http.send(new FormData(f));
+}, false);
+</script>
+
+
+
+        </script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.0/holder.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.7/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="/js/core.js" type="text/javascript"></script>
+
+    </body>
+</html>
